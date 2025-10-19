@@ -1,17 +1,105 @@
-# mvvm_architecture
+Flutter MVVM Authentication Demo
 
-A new Flutter project.
+A simple, clean-architecture demonstration project built with Flutter using the Model-View-ViewModel (MVVM) design pattern and the provider package for state management. This application showcases a basic user authentication flow (Login and Logout).
 
-## Getting Started
+🚀 Features
 
-This project is a starting point for a Flutter application.
+Login Flow: Accepts mock credentials (user / password).
 
-A few resources to get you started if this is your first Flutter project:
+Logout Functionality: Clears the authentication state and returns the user to the login screen.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Real-time State Management: Uses ChangeNotifierProvider to instantly switch between the LoginView and HomeView when the authentication status changes.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# myym
+Clean Separation of Concerns: Clearly separates UI (View), Business Logic (ViewModel), and Data Structure (Model).
+
+📐 Architecture: MVVM Pattern
+
+This project strictly adheres to the MVVM pattern for maintainability and scalability.
+
+Component
+
+Role
+
+Files
+
+Model
+
+Holds the data structure (what the data looks like).
+
+lib/model/auth_model.dart
+
+View
+
+The UI layer (widgets) that the user interacts with. It listens to the ViewModel.
+
+lib/view/login_view.dart, lib/view/home_view.dart
+
+ViewModel
+
+Contains the business logic and state. It updates the Model and notifies the View of changes.
+
+lib/viewmodel/auth_view_model.dart
+
+Flow Diagram
+
+View (LoginScreen) captures user input.
+
+View calls a function (login) on the ViewModel (AuthViewModel), passing the data (AuthModel).
+
+ViewModel executes the business logic (mock API call).
+
+ViewModel updates its state (_isAuthenticated) and calls notifyListeners().
+
+The root View (main.dart's Consumer) listens to this change and rebuilds, showing the HomeView.
+
+When the user presses Logout on the HomeView, the process reverses, and the LoginView is shown.
+
+🛠️ Prerequisites
+
+Flutter SDK installed and configured.
+
+A code editor (VS Code or Android Studio).
+
+📦 Dependencies
+
+The core functionality and state management rely on the official Flutter Provider package.
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.0.0 # Used for efficient state management (MVVM)
+
+
+🏃 Getting Started
+
+Clone the repository:
+
+git clone [YOUR_REPO_URL]
+cd flutter_mvvm_auth_demo
+
+
+Install dependencies:
+
+flutter pub get
+
+
+Run the application:
+
+flutter run
+
+
+Test Credentials
+
+Use the following mock credentials to log in:
+
+Field
+
+Value
+
+Username
+
+user
+
+Password
+
+password
