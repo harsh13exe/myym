@@ -1,63 +1,61 @@
-Flutter MVVM Authentication Demo
-A simple, clean-architecture demonstration project built with Flutter using the Model-View-ViewModel (MVVM) design pattern and the provider package for state management. This application showcases a basic user authentication flow (Login and Logout).
-🚀 Features
-Login Flow: Accepts mock credentials (user / password).
-Logout Functionality: Clears the authentication state and returns the user to the login screen.
-Real-time State Management: Uses ChangeNotifierProvider to instantly switch between the LoginView and HomeView when the authentication status changes.
-Clean Separation of Concerns: Clearly separates UI (View), Business Logic (ViewModel), and Data Structure (Model).
-📐 Architecture: MVVM Pattern
-This project strictly adheres to the MVVM pattern for maintainability and scalability.
-Component
-Role
-Files
-Model
-Holds the data structure (what the data looks like).
-lib/model/auth_model.dart
-View
-The UI layer (widgets) that the user interacts with. It listens to the ViewModel.
-lib/view/login_view.dart, lib/view/home_view.dart
-ViewModel
-Contains the business logic and state. It updates the Model and notifies the View of changes.
-lib/viewmodel/auth_view_model.dart
+# 🧩 Flutter MVVM Authentication Demo
 
-Flow Diagram
-View (LoginScreen) captures user input.
-View calls a function (login) on the ViewModel (AuthViewModel), passing the data (AuthModel).
-ViewModel executes the business logic (mock API call).
-ViewModel updates its state (_isAuthenticated) and calls notifyListeners().
-The root View (main.dart's Consumer) listens to this change and rebuilds, showing the HomeView.
-When the user presses Logout on the HomeView, the process reverses, and the LoginView is shown.
-🛠️ Prerequisites
-Flutter SDK installed and configured.
-A code editor (VS Code or Android Studio).
-📦 Dependencies
-The core functionality and state management rely on the official Flutter Provider package.
+A simple, clean-architecture demonstration project built with **Flutter** using the **Model-View-ViewModel (MVVM)** design pattern and the **Provider** package for state management.  
+This application showcases a basic **user authentication flow (Login and Logout)** implemented with real-time state updates.
+
+---
+
+## 🚀 Features
+
+- 🔐 **Login Flow** – Accepts mock credentials (`user / password`).
+- 🚪 **Logout Functionality** – Clears authentication state and redirects to the login screen.
+- ⚡ **Real-time State Management** – Uses `ChangeNotifierProvider` to instantly switch between `LoginView` and `HomeView`.
+- 🧱 **Clean Separation of Concerns** – Separates:
+  - **UI (View)**
+  - **Business Logic (ViewModel)**
+  - **Data Structure (Model)**
+
+---
+
+## 📐 Architecture – MVVM Pattern
+
+This project strictly follows the **MVVM** architecture for maintainability and scalability.
+
+| Component | Role | Files |
+|------------|------|-------|
+| **Model** | Defines the data structure | `lib/model/auth_model.dart` |
+| **View** | Handles UI and listens to ViewModel | `lib/view/login_view.dart`, `lib/view/home_view.dart` |
+| **ViewModel** | Contains business logic and state | `lib/viewmodel/auth_view_model.dart` |
+
+---
+
+## 🔄 Flow Diagram
+
+1. **View (LoginScreen)** captures user input.  
+2. **View** calls `login()` on the **ViewModel (AuthViewModel)**, passing the `AuthModel`.  
+3. **ViewModel** performs the mock authentication logic.  
+4. **ViewModel** updates its internal state (`_isAuthenticated`) and calls `notifyListeners()`.  
+5. **Root View** (`main.dart` using `Consumer`) listens to the change and rebuilds the UI to show **HomeView**.  
+6. **Logout** reverses the process, returning the user to the **LoginView**.
+
+---
+
+## 🛠️ Prerequisites
+
+Before running the app, ensure you have:
+
+- ✅ Flutter SDK installed and configured  
+- ✅ Code editor (VS Code or Android Studio)  
+- ✅ Basic understanding of MVVM architecture  
+
+---
+
+## 📦 Dependencies
+
+The project uses Flutter’s **Provider** package for efficient state management.
+
+```yaml
 dependencies:
   flutter:
     sdk: flutter
-  provider: ^6.0.0 # Used for efficient state management (MVVM)
-
-🏃 Getting Started
-Clone the repository:
-git clone [YOUR_REPO_URL]
-cd flutter_mvvm_auth_demo
-
-
-Install dependencies:
-flutter pub get
-
-
-Run the application:
-flutter run
-
-
-Test Credentials
-Use the following mock credentials to log in:
-Field
-Value
-Username
-user
-Password
-password
-
-
+  provider: ^6.0.0
